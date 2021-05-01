@@ -26,3 +26,12 @@
 """
 
 ip = "192.168.3.1"
+ip = ip.split('.')
+r = list(map(int, ip))
+ip_template = '''
+{:<8}  {:<8}  {:<8}  {:<8}  
+{:08b}  {:08b}  {:08b}  {:08b}  
+'''
+print(ip_template.format(r[0],r[1],r[2],r[3],r[0],r[1],r[2],r[3]))
+#print(type(r[0]))
+#print('{:8b}  {:8b}  {:8b}  {:8b}'.format(r[0],r[1],r[2],r[3]))
