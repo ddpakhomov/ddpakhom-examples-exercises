@@ -24,3 +24,30 @@ Out[1]: '11111111111111111111111111110000'
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+
+inp = input('Запросить у пользователя ввод IP-сети в формате #10.1.1.0/24#: ')
+#print(inp)
+l1 = inp.split('/')
+#print(l1)
+ip = l1[0].split('.')
+ip = list(map(int, ip))
+template_network = '''
+Network:
+{:<8}  {:<8}  {:<8}  {:<8}  
+{:08b}  {:08b}  {:08b}  {:08b}  
+'''
+print(template_network.format(ip[0], ip[1], ip[2], ip[3], ip[0], ip[1], ip[2], ip[3]))
+template_mask = '''
+Mask:
+/{}
+{:<8}  {:<8}  {:<8}  {:<8}  
+{:08b}  {:08b}  {:08b}  {:08b}
+'''
+#mask = int(l1[1]) 
+m = '1' * int(l1[1]) + '0' * (32 - int(l1[1]))
+#print(m)
+#n = int(m[8:16], 2)
+#print(n)
+print(template_mask.format(l1[1], int(m[0:8], 2) ,int(m[8:16], 2), int(m[16:24], 2), int(m[24:32], 2), int(m[0:8], 2), int(m[8:16], 2), int(m[16:24], 2), int(m[24:32], 2) ))
+
+
